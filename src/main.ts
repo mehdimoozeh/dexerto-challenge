@@ -22,8 +22,8 @@ export async function bootstrap() {
   app.use(compression());
   app.set('etag', false);
 
-  const PORT = configService.get('PORT') ?? 3000;
-  const HOSTNAME = configService.get('HOSTNAME') ?? 'localhost';
+  const PORT = configService.get('PORT', 3000);
+  const HOSTNAME = configService.get('HOSTNAME', 'localhost');
   await app.listen(PORT, HOSTNAME, () => {
     console.log(`Server running on ${HOSTNAME}:${PORT}`);
   });

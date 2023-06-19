@@ -16,7 +16,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         uri:
-          configService.get('MONGO_URI') ?? 'mongodb://localhost:27017/dexerto',
+          configService.get('MONGO_URI', 'mongodb://localhost:27017/dexerto'),
         useNewUrlParser: true,
       }),
       inject: [ConfigService],
