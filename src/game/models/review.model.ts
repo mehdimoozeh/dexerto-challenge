@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
+
+export type ReviewDocument = HydratedDocument<Review>;
 
 @ObjectType()
 @Schema({ versionKey: false, timestamps: true })
@@ -8,12 +11,16 @@ export class Review {
   _id: string;
 
   @Field()
-  @Prop()
+  @Prop({ type: Types.ObjectId, ref: 'User' })
   userId: string;
 
   @Field()
-  @Prop()
-  rating: string;
+  @Prop({ type: Types.ObjectId, ref: 'Game' })
+  gameId: string;
+
+  @Field()
+  @Prop({ min: 0, max: 5 })
+  rating: number;
 
   @Field()
   @Prop()
@@ -25,3 +32,5 @@ export class Review {
   @Field()
   updatedAt: Date;
 }
+
+export const ReviewSchema = SchemaFactory.createForClass(Review);

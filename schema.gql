@@ -32,6 +32,7 @@ type LoginResponse {
 type Mutation {
   login(loginInput: LoginInput!): LoginResponse
   newGame(newGameInput: NewGameInput!): Game!
+  newReview(NewReviewInput: NewReviewInput!): Review!
   register(registerInput: RegisterInput!): RegisterResponse!
 }
 
@@ -40,6 +41,12 @@ input NewGameInput {
   description: String!
   releaseDate: String!
   title: String!
+}
+
+input NewReviewInput {
+  comment: String!
+  gameId: ID!
+  rating: Float!
 }
 
 type Query {
@@ -63,7 +70,8 @@ type Review {
   _id: ID!
   comment: String!
   createdAt: DateTime!
-  rating: String!
+  gameId: String!
+  rating: Float!
   updatedAt: DateTime!
   userId: String!
 }
