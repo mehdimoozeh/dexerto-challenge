@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { NewReviewInput } from './inputs/new-review.input';
 import { Game, GameDocument } from './models/game.model';
 import { UserInputError } from '@nestjs/apollo';
+import { ReviewsResponse } from './args/reviews.arg';
 
 @Injectable()
 export class ReviewService {
@@ -14,6 +15,19 @@ export class ReviewService {
     @InjectModel(Game.name)
     private readonly gameModel: Model<GameDocument>,
   ) {}
+
+  async getReviewsByGameId(
+    gameId: string,
+    limit: number,
+    page: number,
+  ): Promise<ReviewsResponse> {
+    const total = await this.reviewModel.countDocuments({ gameId });
+    const reviews = await this.reviewModel
+      .find({ gameId })
+      .limit(limit)
+      .skip((page - 1) * limit);
+    return { reviews, total, page };
+  }
 
   async create(
     userId: Types.ObjectId,

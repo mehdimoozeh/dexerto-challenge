@@ -51,6 +51,7 @@ input NewReviewInput {
 
 type Query {
   games: String!
+  reviews(gameId: String!, limit: Float! = 10, page: Float! = 1): ReviewsResponse!
 }
 
 input RegisterInput {
@@ -74,4 +75,10 @@ type Review {
   rating: Float!
   updatedAt: DateTime!
   userId: String!
+}
+
+type ReviewsResponse {
+  page: Float!
+  reviews: [Review!]!
+  total: Float!
 }
