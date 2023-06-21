@@ -16,8 +16,23 @@ type Game {
   title: String!
 }
 
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LoginResponse {
+  _id: ID!
+  avatarUrl: String
+  email: String!
+  emailVerified: Boolean!
+  token: String!
+}
+
 type Mutation {
+  login(loginInput: LoginInput!): LoginResponse
   newGame(newGameInput: NewGameInput!): Game!
+  register(registerInput: RegisterInput!): RegisterResponse!
 }
 
 input NewGameInput {
@@ -29,6 +44,19 @@ input NewGameInput {
 
 type Query {
   games: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+}
+
+type RegisterResponse {
+  _id: ID!
+  avatarUrl: String
+  email: String!
+  emailVerified: Boolean!
+  token: String!
 }
 
 type Review {
