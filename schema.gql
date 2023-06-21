@@ -2,6 +2,40 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Game {
+  _id: ID!
+  averageRating: Float!
+  description: String!
+  releaseDate: String!
+  reviews: [Review!]!
+  title: String!
+}
+
+type Mutation {
+  newGame(newGameInput: NewGameInput!): Game!
+}
+
+input NewGameInput {
+  averageRating: Float!
+  description: String!
+  releaseDate: String!
+  title: String!
+}
+
 type Query {
-  getHello: String!
+  games: String!
+}
+
+type Review {
+  _id: ID!
+  comment: String!
+  createdAt: DateTime!
+  rating: String!
+  updatedAt: DateTime!
+  userId: String!
 }

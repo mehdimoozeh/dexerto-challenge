@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppResolver } from './app.resolver';
-import { AppService } from './app.service';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -9,6 +7,7 @@ import { GraphQLError, GraphQLFormattedError } from 'graphql';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { GameModule } from './game/game.module';
 
 @Module({
   imports: [
@@ -20,8 +19,10 @@ import { ThrottlerModule } from '@nestjs/throttler';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        uri:
-          configService.get('MONGO_URI', 'mongodb://localhost:27017/dexerto'),
+        uri: configService.get(
+          'MONGO_URI',
+          'mongodb://localhost:27017/dexerto',
+        ),
         useNewUrlParser: true,
       }),
       inject: [ConfigService],
@@ -45,8 +46,9 @@ import { ThrottlerModule } from '@nestjs/throttler';
         return graphQLFormattedError;
       },
     }),
+    GameModule,
   ],
   controllers: [],
-  providers: [AppService, AppResolver],
+  providers: [],
 })
 export class AppModule {}
