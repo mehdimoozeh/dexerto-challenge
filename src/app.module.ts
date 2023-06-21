@@ -8,6 +8,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { GameModule } from './game/game.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -47,6 +49,8 @@ import { GameModule } from './game/game.module';
       },
     }),
     GameModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
