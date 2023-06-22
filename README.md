@@ -1,5 +1,38 @@
 # Installation
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
+- Node 16.18.0
+- MongoDB 5.0.3
+- 
+As you see we are using yarn so you need to have yarn and install dependencies with yarn. 
+```bash
+$ yarn install
+```
+## Environment Variables
+This project won't read env from files so you need to set environment before starting
+```bash
+PORT=3000
+HOSTNAME=localhost
 
+MONGO_URI=mongodb://localhost:27017/dexerto
+
+JWT_SECRET=secret123
+JWT_EXPIRES_IN=90d
+```
+## Running the app
+
+```bash
+# development
+$ yarn run start
+
+# watch mode
+$ yarn run start:dev
+
+# production mode
+$ yarn run start:prod
+```
+## How to contribute
+[Contribution guide](./CONTRIBUTING.md)
 # Tasks
 ## Objective:
 Your task is to create a scalable and maintainable GraphQL API using Node.js, Apollo, and a NoSQL database. The purpose of this API will be for a gaming review platform where users can review games.
