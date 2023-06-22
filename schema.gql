@@ -12,6 +12,7 @@ type Game {
   averageRating: Float!
   description: String!
   releaseDate: String!
+  reviews: [Review!]
   title: String!
 }
 
@@ -50,6 +51,7 @@ input NewReviewInput {
 
 type Query {
   allGames: [Game!]!
+  gameById(gameId: String!): Game!
   reviews(gameId: String!, limit: Float! = 10, page: Float! = 1): ReviewsResponse!
 }
 

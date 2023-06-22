@@ -24,6 +24,7 @@ export class ReviewService {
     const total = await this.reviewModel.countDocuments({ gameId });
     const reviews = await this.reviewModel
       .find({ gameId })
+      .sort({ createdAt: -1 })
       .limit(limit)
       .skip((page - 1) * limit);
     return { reviews, total, page };

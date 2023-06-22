@@ -10,6 +10,11 @@ export class GameService {
     @InjectModel(Game.name) private readonly gameModel: Model<GameDocument>,
   ) {}
 
+  async getGameById(gameId: string, limit = 10): Promise<Game> {
+    const game = await this.gameModel.findById(gameId).limit(limit);
+    return game;
+  }
+
   async create(newGameInput: NewGameInput): Promise<Game> {
     const newGame = await this.gameModel.create(newGameInput);
     return newGame;
