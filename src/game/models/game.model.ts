@@ -1,6 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Review } from './review.model';
 import { HydratedDocument } from 'mongoose';
 
 export type GameDocument = HydratedDocument<Game>;
@@ -26,10 +25,6 @@ export class Game {
   @Field()
   @Prop()
   averageRating: number;
-
-  @Field(() => [Review])
-  @Prop({ default: [] })
-  reviews: Review[];
 }
 
 export const GameSchema = SchemaFactory.createForClass(Game);
