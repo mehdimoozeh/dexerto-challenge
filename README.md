@@ -49,7 +49,7 @@ Your task is to create a scalable and maintainable GraphQL API using Node.js, Ap
 ### Error Handling:
 - [x] The application should handle potential errors gracefully, returning appropriate status codes and messages.
 ### Documentation:
-- [ ] Provide clear and concise documentation on how to install and run the application locally in the README file of the GitHub repository.
+- [x] Provide clear and concise documentation on how to install and run the application locally in the README file of the GitHub repository.
 ### Bonus Points:
 #### Security:
 - [x] Implement basic security measures such as rate limiting and input validation.

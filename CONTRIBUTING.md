@@ -148,7 +148,7 @@ export class GameResolver {
   }
 }
 ```  
-`getGameById` will resolve `reviews` automatically.
+`gameById` will resolve `reviews` automatically.
 ## DTO
 
 _A DTO is an object that defines how the data will be transferred over the network._
