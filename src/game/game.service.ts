@@ -14,4 +14,9 @@ export class GameService {
     const newGame = await this.gameModel.create(newGameInput);
     return newGame;
   }
+
+  async getAllGames(): Promise<Game[]> {
+    const games = await this.gameModel.find();
+    return games;
+  }
 }

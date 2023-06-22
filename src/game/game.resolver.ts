@@ -7,9 +7,9 @@ import { Game } from './models/game.model';
 export class GameResolver {
   constructor(private readonly gameService: GameService) {}
 
-  @Query(() => String)
-  games() {
-    return 'games';
+  @Query(() => [Game])
+  async allGames() {
+    return await this.gameService.getAllGames();
   }
 
   @Mutation(() => Game)
