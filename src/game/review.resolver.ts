@@ -6,6 +6,7 @@ import { NewReviewInput } from './inputs/new-review.input';
 import { User } from '../user/models/user.model';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { ReviewsArgs, ReviewsResponse } from './args/reviews.arg';
+import { GqlThrottlerGuard } from '../rateLimiter/guards/gqlThrottler.guard';
 
 @UseGuards(GqlAuthGuard)
 @Resolver()
@@ -21,6 +22,7 @@ export class ReviewResolver {
     );
   }
 
+  @UseGuards(GqlThrottlerGuard)
   @Mutation(() => Review)
   async newReview(
     @Args('NewReviewInput') newReviewInput: NewReviewInput,

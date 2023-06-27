@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot(),
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 20,
+      limit: 5,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
