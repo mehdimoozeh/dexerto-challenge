@@ -12,7 +12,10 @@ import { Game } from './models/game.model';
 import { ReviewService } from './review.service';
 import { GameByIdArgs } from './args/game-by-id.args';
 import { Review } from './models/review.model';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 
+@UseGuards(GqlAuthGuard)
 @Resolver(() => Game)
 export class GameResolver {
   constructor(
