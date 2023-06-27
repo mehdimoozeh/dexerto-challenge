@@ -31,6 +31,12 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 ```
+
+## Running the tests
+```bash
+$ yarn test
+```
+* Don't forget to set environment variables before running tests
 ## How to contribute
 [Contribution guide](./CONTRIBUTING.md)
 # Tasks
@@ -54,6 +60,6 @@ Your task is to create a scalable and maintainable GraphQL API using Node.js, Ap
 #### Security:
 - [x] Implement basic security measures such as rate limiting and input validation.
 #### Testing:
-- [ ] Write tests for your resolvers using Jest, Cypress, or another testing framework of your choice.
+- [x] Write tests for your resolvers using Jest, Cypress, or another testing framework of your choice.
 #### Authentication:
 - [x] Implement a JWT (JSON Web Token) authentication system for your API.
